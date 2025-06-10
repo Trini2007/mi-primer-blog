@@ -12,4 +12,14 @@ class Publicacion(models.Model):
         self.save()
     def __str__(self):
         return self.titulo
+class Formulauno(models.Model):
+    autor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    Nombre = models.CharField(max_length=200)
+    equipo = models.CharField(max_length=200)
+    nacimiento = models.IntegerField()
+    carreras_ganadas = models.IntegerField()
+    campeonatos_corridos = models.IntegerField()
+    biografia = models.TextField()
+    fecha_creacion = models.DateTimeField(default=timezone.now)
+    fecha_publicacion = models.DateTimeField(blank=True, null=True)
 # Create your models here.
