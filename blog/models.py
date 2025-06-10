@@ -22,4 +22,5 @@ class Formulauno(models.Model):
     biografia = models.TextField()
     fecha_creacion = models.DateTimeField(default=timezone.now)
     fecha_publicacion = models.DateTimeField(blank=True, null=True)
+    #hola
 # Create your models here.
