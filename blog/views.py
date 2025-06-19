@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Publicacion
+from .models import Formulauno
 from django.contrib.auth.models import User
 # Create your views here.
 def lista_public(request):
@@ -13,8 +14,8 @@ def lista_public(request):
 		usuario_activo = int(usr_id)
 	else:
   	    usuario_activo = None
-	return render(request, 'blog/lista_public.html', {
-		'publicaciones':publicaciones,
-		'usuarios':usuarios,
-		'usuario_activo':usuario_activo
-	})
+	return render(request, 'blog/lista_public.html', {'publicaciones':publicaciones,'usuarios':usuarios,'usuario_activo':usuario_activo,})
+	
+def lista_Formulauno(request):
+	charlesleclerc=Formulauno.objects.all()
+	return render (request,'blog/lista_Formulauno.html', {'Formulauno':charlesleclerc})

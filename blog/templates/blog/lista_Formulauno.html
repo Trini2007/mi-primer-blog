@@ -1,0 +1,15 @@
+<html>
+    <h1>
+        <body>
+        <l1>Formula uno</l1>
+        {% for Formulauno in charlesleclerc %}
+        <h2> Nombre del piloto: {{Formulauno.Nombre}} | <i> Creado por: {{Formulauno.autor}}</i></h2>
+        <p>Equipos: {{Formula.equipo}}</p>
+        <p>Nacimiento: {{Formula.nacimiento}}</p>
+        <p>Carreras ganadas: {{Formula.carreras_ganadas}} carreras ganadas</p>
+        <p>Temporadas hechas: {{Formula.campeonatos_corridos}} temporadas hechas</p>
+        <p>Biografia general: {{Formula.biografia}}</p>
+        {%end for%}
+        </body>
+    </h1>
+</html>
