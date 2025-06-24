@@ -1,15 +1,68 @@
+
+{% load static %}
 <html>
-    <h1>
-        <body>
-        <l1>Formula uno</l1>
-        {% for Formulauno in charlesleclerc %}
-        <h2> Nombre del piloto: {{Formulauno.Nombre}} | <i> Creado por: {{Formulauno.autor}}</i></h2>
-        <p>Equipos: {{Formula.equipo}}</p>
-        <p>Nacimiento: {{Formula.nacimiento}}</p>
-        <p>Carreras ganadas: {{Formula.carreras_ganadas}} carreras ganadas</p>
-        <p>Temporadas hechas: {{Formula.campeonatos_corridos}} temporadas hechas</p>
-        <p>Biografia general: {{Formula.biografia}}</p>
-        {%end for%}
-        </body>
-    </h1>
+    <head>
+        <title>Blog de Trinidad Bossi</title> 
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    </head>
+        <body style="background-color: rgb(255, 0, 0);">
+        <div class="titulo" style="background: rgb(92, 6, 6);">
+            <h1>Formula Uno</h1>
+        </div>
+        
+        <!-- Filtro por usuario usando enlaces -->
+        <div class="filtro-usuarios">
+        <strong>Filtrar por autor:</strong>
+        
+        <!-- Opción "Todos" -->
+        <a href="?" class="usuario-filtro {% if not usuario_activo %}activo{% endif %}">
+            Todos
+        </a>
+        
+        <!-- Opciones por usuario -->
+        {% for usuario in usuarios %}
+            <a href="?usuario={{ usuario.id }}" 
+            class="usuario-filtro {% if usuario_activo == usuario.id %}activo{% endif %}">
+                {{ usuario.username }}
+            </a>
+        {% endfor %}
+        </div>
+        <img src="https://th.bing.com/th/id/OIP.AgVp8PW07MfmgTFo60uuOAHaE8?rs=1&pid=ImgDetMain&cb=idpwebpc2" alt="Banner arriba"class="uno">
+        <!-- Lista de publicaciones -->
+        <div class="content container"> 
+        <div class="row"> 
+            <div class="col-md-8"> 
+                {% for F1 in charlesleclerc %} 
+                    <div class="post"> 
+                            <div class="date"> 
+                            <p> publicado: {{ F1.fecha_publicacion }}</p> 
+                            </div> 
+                        <h2>{{ F1.titulo }}</h2> 
+                        <p>{{ F1.texto|linebreaksbr }}</p> 
+                        <hr> 
+                    </div> 
+                {% endfor %} 
+            </div> 
+        </div>  
+        {% for F1 in Formulauno %}
+        <h2> Charles Leclerc | <i> Creado por: {{F1.autor}}</i></h2>
+        <div class="texto_infogeneral">
+            <p>Nombre del piloto: {{F1.Nombre}}</p>
+            <p>Equipo actual: {{F1.equipo}} </p>
+            <p>Nacimiento: {{F1.nacimiento}} de Octubre de 1997</p>
+            <p>Carreras ganadas: {{F1.carreras_ganadas}} carreras ganadas</p>
+            <p>Temporadas hechas: {{F1.campeonatos_corridos}} temporadas hechas</p>
+            <p>Biografia general: {{F1.biografia}}</p>
+        </div>
+        {%endfor%}
+        <img src="https://cdn.ferrari.com/cms/network/media/img/resize/65b26251526a180024bb4cb4-ferrari-charles-leclerc-2024-contract-news-desk-2?width=1080" alt="Banner abajo" class="dos">
+        
+</body>
+</html>
+
+    
+
 </html>
